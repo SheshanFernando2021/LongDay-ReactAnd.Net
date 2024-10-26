@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
   dateTime: {
     fontSize: 13,
-    color: "white",
+    color: "black",
   },
 });
 

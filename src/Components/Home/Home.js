@@ -9,61 +9,70 @@ import {
 import React from "react";
 import Clock from "../Clock/Clock";
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const DummyList = [
     {
       id: 1,
       title: "Meeting",
       date: "2022-01-01",
       time: "10:00 AM",
+      description: "Meeting with client",
     },
     {
       id: 2,
       title: "Dinner",
       date: "2022-01-02",
       time: "5:00 PM",
+      description: "Dinner with friends",
     },
     {
       id: 3,
       title: "Grocery",
       date: "2022-01-03",
       time: "12:00 PM",
+      description: "Grocery shopping",
     },
     {
       id: 4,
       title: "Shopping",
       date: "2022-01-04",
       time: "8:00 AM",
+      description: "Shopping for clothes",
     },
     {
       id: 5,
       title: "Work",
       date: "2022-01-05",
       time: "9:00 AM",
+      description: "Work on project",
     },
     {
       id: 6,
       title: "Exercise",
       date: "2022-01-06",
       time: "4:00 PM",
+      description: "Go to gym",
     },
     {
       id: 7,
       title: "Sleep",
       date: "2022-01-07",
       time: "11:00 PM",
+      description: "Go to bed",
     },
     {
       id: 8,
       title: "Rest",
       date: "2022-01-08",
       time: "6:00 AM",
+      description: "Take a nap",
     },
     {
       id: 9,
       title: "Study",
       date: "2022-01-09",
       time: "1:00 PM",
+      description: "Study for exam",
     },
   ];
 
@@ -81,12 +90,13 @@ const Home = () => {
         </View>
       </View>
 
-      {/* <TouchableOpacity style={styles.DeleteButton}>
-        <Text style={styles.DeleteIcon}>Delete</Text>
-      </TouchableOpacity> */}
       <ScrollView style={styles.list}>
         {DummyList.map((item) => (
-          <TouchableOpacity key={item.id} style={styles.item}>
+          <TouchableOpacity
+            key={item.id}
+            style={styles.item}
+            onPress={() => navigation.navigate('Details', { item })} // Pass the item
+          >
             <Text style={styles.itemTime}>{item.time}</Text>
             <Text style={styles.itemTitle}>{item.title}</Text>
             <Text style={styles.itemDate}>{item.date}</Text>
@@ -108,7 +118,7 @@ const styles = StyleSheet.create({
   },
   h1: {
     fontSize: 36,
-    color: "white",
+    color: "black",
     textAlign: "center",
     paddingTop: 20,
   },

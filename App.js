@@ -5,13 +5,20 @@ import Entry from "./src/Components/Entry/Entry";
 import Details from "./src/Components/Details/Details";
 import Delete from "./src/Components/Delete/Delete";
 import Clock from "./src/Components/Clock/Clock";
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 export default function App() {
+  const Stack = createNativeStackNavigator();
   return (
-    <View style={styles.container}>
-      <Home />
-      <StatusBar hidden={true} />
-    </View>
+    <NavigationContainer >
+    <Stack.Navigator screenOptions={{headerShown:false}} >
+      <Stack.Screen name="Home"  component={Home} />
+      <Stack.Screen name="Details" component={Details} />
+    </Stack.Navigator>
+    <StatusBar hidden={true}/>
+
+  </NavigationContainer>
+
   );
 }
 
