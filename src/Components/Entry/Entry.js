@@ -1,5 +1,4 @@
 import { View, Text } from "react-native";
-import "./Entry.css";
 import React from "react";
 
 const Entry = () => {
