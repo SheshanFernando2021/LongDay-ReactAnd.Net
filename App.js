@@ -1,10 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+import Home from "./src/Components/Home/Home";
+import Entry from "./src/Components/Entry/Entry";
+import Details from "./src/Components/Details/Details";
+import Delete from "./src/Components/Delete/Delete";
+import Clock from "./src/Components/Clock/Clock";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Home />
+      <Entry />
+      <Details />
+      <Delete />
+      <Clock />
       <StatusBar style="auto" />
     </View>
   );
@@ -13,8 +22,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
