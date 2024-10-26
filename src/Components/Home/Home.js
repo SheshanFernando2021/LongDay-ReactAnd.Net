@@ -82,7 +82,7 @@ const Home = ({ navigation }) => {
         <View style={styles.clock}>
           <Clock />
         </View>
-        <TouchableOpacity style={styles.AddButton}>
+        <TouchableOpacity style={styles.AddButton} onPress={() => navigation.navigate("Entry")}>
           <Text style={styles.AddIcon}>+</Text>
         </TouchableOpacity>
         <View>

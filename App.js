@@ -14,8 +14,10 @@ export default function App() {
     <Stack.Navigator screenOptions={{headerShown:false}} >
       <Stack.Screen name="Home"  component={Home} />
       <Stack.Screen name="Details" component={Details} />
+      <Stack.Screen name="Entry" component={Entry} /> 
     </Stack.Navigator>
-    <StatusBar hidden={true}/>
+    <StatusBar options="auto"  hidden={true}/>
+
 
   </NavigationContainer>
 
@@ -27,4 +29,5 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#635E61",
   },
+
 });
