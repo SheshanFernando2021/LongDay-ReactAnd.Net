@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 
 const Details = ({ route, navigation }) => {
-  const { item } = route.params; // Get the item from route params
+  const { item } = route.params;
 
   const handleDelete = async () => {
     Alert.alert("Delete Item", "Are you sure you want to delete this item?", [
@@ -19,7 +19,7 @@ const Details = ({ route, navigation }) => {
             });
             if (response.ok) {
               Alert.alert("Success", "Item deleted successfully!");
-              navigation.goBack(); // Navigate back after deletion
+              navigation.goBack();
             } else {
               Alert.alert("Error", "Could not delete the item.");
             }
@@ -34,14 +34,16 @@ const Details = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{item.itemTitle}</Text>
-      <Text style={styles.date}>{item.date}</Text>
-      <Text style={styles.time}>{item.time}</Text>
-      <Text style={styles.description}>{item.description}</Text>
-      
-      <TouchableOpacity style={styles.deleteButton} onPress={handleDelete}>
-        <Text style={styles.deleteButtonText}>Delete</Text>
-      </TouchableOpacity>
+      <View style={styles.content}>
+        <Text style={styles.title}>{item.itemTitle}</Text>
+        <Text style={styles.date}>{item.date}</Text>
+        <Text style={styles.time}>{item.time}</Text>
+        <Text style={styles.description}>{item.itemDescription}</Text>
+        
+        <TouchableOpacity style={styles.deleteButton} onPress={handleDelete}>
+          <Text style={styles.deleteButtonText}>Delete</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -49,8 +51,25 @@ const Details = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center", // Center content vertically
+    alignItems: "center", // Center content horizontally
     padding: 20,
-    backgroundColor: "#f9f9f9", // Light grey background for contrast
+    backgroundColor: "#f9f9f9",
+  },
+  content: {
+    width: '100%',
+    padding: 20,
+    borderRadius: 10,
+    backgroundColor: "#fff",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 6,
+    elevation: 5,
+    alignItems: "center", // Center text horizontally
   },
   title: {
     fontSize: 32,
@@ -72,27 +91,17 @@ const styles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 26,
     color: "#444",
-    backgroundColor: "#fff",
-    padding: 15,
-    borderRadius: 10,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
+    textAlign: "center", // Center text
     marginBottom: 20,
   },
   deleteButton: {
-    backgroundColor: "#FF2323", // Red color for delete button
+    backgroundColor: "#FF2323",
     borderRadius: 10,
     paddingVertical: 15,
     paddingHorizontal: 20,
     alignItems: "center",
     justifyContent: "center",
-    width: "100%", // Full width of the screen
+    width: "100%",
   },
   deleteButtonText: {
     color: "#fff",
