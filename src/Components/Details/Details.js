@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 const Details = ({ route, navigation }) => {
   const { item } = route.params; // Get the item from route params
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     Alert.alert("Delete Item", "Are you sure you want to delete this item?", [
       {
         text: "Cancel",
@@ -12,9 +12,21 @@ const Details = ({ route, navigation }) => {
       },
       {
         text: "Delete",
-        onPress: () => {
-          // Handle deletion logic here
-          navigation.goBack(); // Navigate back after deletion
+        onPress: async () => {
+          try {
+            const response = await fetch(`https://mobileapp-webapp-service.azurewebsites.net/api/item/${item.itemId}`, {
+              method: 'DELETE',
+            });
+            if (response.ok) {
+              Alert.alert("Success", "Item deleted successfully!");
+              navigation.goBack(); // Navigate back after deletion
+            } else {
+              Alert.alert("Error", "Could not delete the item.");
+            }
+          } catch (error) {
+            console.error("Error deleting item: ", error);
+            Alert.alert("Error", "An error occurred while deleting the item.");
+          }
         },
       },
     ]);
@@ -22,7 +34,7 @@ const Details = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{item.title}</Text>
+      <Text style={styles.title}>{item.itemTitle}</Text>
       <Text style={styles.date}>{item.date}</Text>
       <Text style={styles.time}>{item.time}</Text>
       <Text style={styles.description}>{item.description}</Text>
