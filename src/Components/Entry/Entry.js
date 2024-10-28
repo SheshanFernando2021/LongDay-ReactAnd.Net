@@ -1,5 +1,157 @@
+// import React, { useState } from "react";
+// import { View, Text, TextInput, StyleSheet, TouchableOpacity, Modal } from "react-native";
+// import DateTimePicker from '@react-native-community/datetimepicker';
+
+// const Entry = () => {
+//   const [title, setTitle] = useState("");
+//   const [date, setDate] = useState(new Date());
+//   const [time, setTime] = useState(new Date());
+//   const [description, setDescription] = useState("");
+//   const [showDatePicker, setShowDatePicker] = useState(false);
+//   const [showTimePicker, setShowTimePicker] = useState(false);
+
+//   const handleDateChange = (event, selectedDate) => {
+//     const currentDate = selectedDate || date;
+//     setShowDatePicker(false);
+//     setDate(currentDate);
+//   };
+
+//   const handleTimeChange = (event, selectedTime) => {
+//     const currentTime = selectedTime || time;
+//     setShowTimePicker(false);
+//     setTime(currentTime);
+//   };
+
+//   const handleSubmit = () => {
+//     const formattedDate = date.toISOString().split('T')[0]; // YYYY-MM-DD
+//     const formattedTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); // HH:MM AM/PM
+//     console.log("Title:", title);
+//     console.log("Date:", formattedDate);
+//     console.log("Time:", formattedTime);
+//     console.log("Description:", description);
+//   };
+
+//   return (
+//     <View style={styles.container}>
+//       <Text style={styles.label}>Title:</Text>
+//       <TextInput
+//         style={styles.input}
+//         value={title}
+//         onChangeText={setTitle}
+//         placeholder="Enter title"
+//       />
+
+//       <View style={styles.row}>
+//         <TouchableOpacity style={styles.dateTimeContainer} onPress={() => setShowDatePicker(true)}>
+//           <Text style={styles.label}>Date:</Text>
+//           <TextInput
+//             style={styles.input}
+//             value={date.toISOString().split('T')[0]} // YYYY-MM-DD
+//             editable={false}
+//           />
+//         </TouchableOpacity>
+
+//         <TouchableOpacity style={styles.dateTimeContainer} onPress={() => setShowTimePicker(true)}>
+//           <Text style={styles.label}>Time:</Text>
+//           <TextInput
+//             style={styles.input}
+//             value={time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} // HH:MM AM/PM
+//             editable={false}
+//           />
+//         </TouchableOpacity>
+//       </View>
+
+//       <Text style={styles.label}>Description:</Text>
+//       <TextInput
+//         style={styles.textArea}
+//         value={description}
+//         onChangeText={setDescription}
+//         placeholder="Enter description"
+//         multiline
+//         numberOfLines={4}
+//       />
+
+//       <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
+//         <Text style={styles.submitButtonText}>Submit</Text>
+//       </TouchableOpacity>
+
+//       {showDatePicker && (
+//         <DateTimePicker
+//           value={date}
+//           mode="date"
+//           display="default"
+//           onChange={handleDateChange}
+//         />
+//       )}
+
+//       {showTimePicker && (
+//         <DateTimePicker
+//           value={time}
+//           mode="time"
+//           display="default"
+//           onChange={handleTimeChange}
+//         />
+//       )}
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     padding: 20,
+//     backgroundColor: "#fff",
+//   },
+//   label: {
+//     fontSize: 18,
+//     marginBottom: 8,
+//     color: "#333",
+//   },
+//   input: {
+//     height: 40,
+//     borderColor: "#ccc",
+//     borderWidth: 1,
+//     borderRadius: 5,
+//     paddingHorizontal: 10,
+//     marginBottom: 15,
+//     color:"black"
+//   },
+//   row: {
+//     flexDirection: "row",
+//     justifyContent: "space-between",
+//     marginBottom: 15,
+//   },
+//   dateTimeContainer: {
+//     flex: 1,
+//     marginHorizontal: 5,
+//   },
+//   textArea: {
+//     textAlign: "left",
+//     textAlignVertical: "top",
+//     height: 300,
+//     borderColor: "#ccc",
+//     borderWidth: 1,
+//     borderRadius: 5,
+//     paddingHorizontal: 10,
+//     paddingVertical: 10,
+//     marginBottom: 20,
+//   },
+//   submitButton: {
+//     backgroundColor: "#3D373A",
+//     padding: 15,
+//     borderRadius: 5,
+//     alignItems: "center",
+//   },
+//   submitButtonText: {
+//     color: "#fff",
+//     fontSize: 18,
+//   },
+// });
+
+// export default Entry;
+
 import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Modal } from "react-native";
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 const Entry = () => {
@@ -22,13 +174,53 @@ const Entry = () => {
     setTime(currentTime);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const formattedDate = date.toISOString().split('T')[0]; // YYYY-MM-DD
-    const formattedTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); // HH:MM AM/PM
-    console.log("Title:", title);
-    console.log("Date:", formattedDate);
-    console.log("Time:", formattedTime);
-    console.log("Description:", description);
+    const formattedTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }); // HH:MM AM/PM
+
+    const entryData = {
+      itemTitle: title,
+      date: formattedDate,
+      time: formattedTime,
+      itemDescription: description,
+      categoryId: 1, // Set this to a valid ID
+    };
+
+    // Validate fields before submitting
+    if (!title || !description) {
+      Alert.alert("Error", "Please fill in all fields.");
+      return;
+    }
+
+    console.log("Submitting data:", JSON.stringify(entryData)); // Debugging line
+
+    try {
+      const response = await fetch("https://mobileapp-webapp-service.azurewebsites.net/api/item", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(entryData),
+      });
+
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        console.error("Response data:", responseData); // Log the full response data
+        Alert.alert("Error", `Failed to submit entry: ${responseData.message || response.statusText}`);
+        return;
+      }
+
+      Alert.alert("Success", "Entry submitted successfully!");
+      // Clear fields
+      setTitle("");
+      setDescription("");
+      setDate(new Date());
+      setTime(new Date());
+    } catch (error) {
+      console.error("Error submitting entry: ", error);
+      Alert.alert("Error", "Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -55,7 +247,7 @@ const Entry = () => {
           <Text style={styles.label}>Time:</Text>
           <TextInput
             style={styles.input}
-            value={time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} // HH:MM AM/PM
+            value={time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })} // HH:MM AM/PM
             editable={false}
           />
         </TouchableOpacity>
@@ -114,7 +306,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     marginBottom: 15,
-    color:"black"
+    color: "black",
   },
   row: {
     flexDirection: "row",
