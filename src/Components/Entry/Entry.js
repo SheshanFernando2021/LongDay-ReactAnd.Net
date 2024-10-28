@@ -231,6 +231,7 @@ const Entry = () => {
         value={title}
         onChangeText={setTitle}
         placeholder="Enter title"
+        placeholderTextColor="#A9A9A9"
       />
 
       <View style={styles.row}>
@@ -259,6 +260,7 @@ const Entry = () => {
         value={description}
         onChangeText={setDescription}
         placeholder="Enter description"
+        placeholderTextColor="#A9A9A9"
         multiline
         numberOfLines={4}
       />
@@ -292,12 +294,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#fff",
+    backgroundColor: "#1A1A1A",
   },
   label: {
     fontSize: 18,
     marginBottom: 8,
-    color: "#333",
+    color: "#FFFF",
   },
   input: {
     height: 40,
@@ -306,7 +308,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     marginBottom: 15,
-    color: "black",
+    color: "lightgray",
+
   },
   row: {
     flexDirection: "row",
@@ -327,6 +330,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 10,
     marginBottom: 20,
+    color: "lightgray",
+
   },
   submitButton: {
     backgroundColor: "#3D373A",

@@ -54,13 +54,13 @@ const styles = StyleSheet.create({
     justifyContent: "center", // Center content vertically
     alignItems: "center", // Center content horizontally
     padding: 20,
-    backgroundColor: "#f9f9f9",
+    backgroundColor: "#1A1A1A",
   },
   content: {
     width: '100%',
     padding: 20,
     borderRadius: 10,
-    backgroundColor: "#fff",
+    backgroundColor: "#1B2A2D",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -74,23 +74,23 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: "bold",
-    color: "#333",
+    color: "#FFCBCB",
     marginBottom: 10,
   },
   date: {
     fontSize: 20,
-    color: "#666",
+    color: "#FFCBCB",
     marginBottom: 5,
   },
   time: {
     fontSize: 20,
-    color: "#666",
+    color: "#FFCBCB",
     marginBottom: 20,
   },
   description: {
     fontSize: 18,
     lineHeight: 26,
-    color: "#444",
+    color: "#FFCBCB",
     textAlign: "center", // Center text
     marginBottom: 20,
   },

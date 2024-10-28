@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   dateTime: {
-    fontSize: 13,
-    color: "black",
+    fontSize: 15,
+    color: "#FFCBCB",
   },
 });
 

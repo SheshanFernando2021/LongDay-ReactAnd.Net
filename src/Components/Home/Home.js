@@ -238,7 +238,7 @@ const Home = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#635E61",
+    backgroundColor: "#1B2A2D",
   },
   clock: {
     top: 5,
@@ -246,14 +246,15 @@ const styles = StyleSheet.create({
   },
   h1: {
     fontSize: 36,
-    color: "black",
+    color: "#FFCBCB",
     textAlign: "center",
     paddingTop: 20,
+    fontWeight: "bold",
   },
   AddButton: {
     height: 50,
     width: 50,
-    backgroundColor: "#3D373A",
+    backgroundColor: "#3C4A3F",
     borderRadius: 13,
     justifyContent: "center",
     alignItems: "center",
@@ -284,7 +285,7 @@ const styles = StyleSheet.create({
     alignContents: "center",
     alignItems: "center",
     flexDirection: "row",
-    backgroundColor: "#B1AEB0",
+    backgroundColor: "#3A3D42",
     padding: 15,
     borderRadius: 10,
     marginVertical: 8,
@@ -305,7 +306,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     fontSize: 16,
     fontWeight: "bold",
-    color: "#333",
+    color: "#FFCBCB",
   },
   itemTime: {
     width: 70,
@@ -318,6 +319,12 @@ const styles = StyleSheet.create({
   itemDate: {
     width: 80,
     textAlign: "right",
+    color: "#000",
+    backgroundColor: "#B0B3B8",
+    justifyContent: "center",
+    padding: 2,
+    borderRadius: 10,
+    fontWeight: "bold",
   },
 });
 
