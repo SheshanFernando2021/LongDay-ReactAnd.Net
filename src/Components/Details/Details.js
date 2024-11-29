@@ -51,8 +51,8 @@ const Details = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center", // Center content vertically
-    alignItems: "center", // Center content horizontally
+    justifyContent: "center", 
+    alignItems: "center", 
     padding: 20,
     backgroundColor: "#1A1A1A",
   },
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 6,
     elevation: 5,
-    alignItems: "center", // Center text horizontally
+    alignItems: "center", 
   },
   title: {
     fontSize: 32,
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 26,
     color: "#FFCBCB",
-    textAlign: "center", // Center text
+    textAlign: "center",
     marginBottom: 20,
   },
   deleteButton: {
