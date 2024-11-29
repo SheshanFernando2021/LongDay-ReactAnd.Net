@@ -57,7 +57,7 @@ Welcome to the **React Native To-Do App** repository! This mobile application al
 git clone https://github.com/YourUsername/ToDoApp.git
 cd ToDoApp
 ```
-###2️⃣ Install Dependencies
+### 2️⃣ Install Dependencies
 ```bash
 npm install
 ```
