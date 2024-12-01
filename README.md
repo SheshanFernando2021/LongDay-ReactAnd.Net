@@ -1,6 +1,10 @@
 # 📋 React Native To-Do App
 
+![](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+
 Welcome to the **React Native To-Do App** repository! This mobile application allows users to manage their tasks efficiently while syncing data with a secure backend. The backend is built using **.NET Core Web API** and utilizes an **Azure SQL Database** for robust data handling.
+
 
 ---
 
