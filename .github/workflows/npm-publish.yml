@@ -19,6 +19,13 @@ jobs:
         with:
           node-version: 20
       - run: npm install
-      - run: echo "skipping the test temporarily"
-      #- run: npm test
+      - name: Install Jest
+        run: npm install jest --save-dev
+      
+      - name: Add Jest test script
+        run: |
+          jq '.scripts.test="jest"' package.json > package.tmp.json && mv package.tmp.json package.json
+      
+      - name: Run tests
+        run: npm test
       #- run: npm publish
