@@ -21,4 +21,4 @@ jobs:
       - run: npm install
       - run: echo "skipping the test temporarily"
       #- run: npm test
-      - run: npm publish
+      #- run: npm publish
